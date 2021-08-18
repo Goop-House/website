@@ -10,6 +10,10 @@
   font-family: grime;
   src: url(fonts/grime.ttf);
 }
+@font-face {
+  font-family: bit-regular;
+  src: url(fonts/8bit-regular.ttf);
+}
 html {
   background: rgb(0, 200, 0);
 }
@@ -109,7 +113,7 @@ a:active {
 }
 
 
-.box1, .box2, .box3 {
+#box {
   display: block;
   text-align: center;
   margin: 2vw;
@@ -123,7 +127,8 @@ a:active {
   border-width: 2px;
   border-color: #333;
   box-shadow: 0px 0px 20px 0px black;
-  transition: filter 200ms;
+  transition: filter 500ms;
+  filter: opacity(100%);
 }
 
 .box1 {
@@ -139,22 +144,17 @@ a:active {
   visibility: hidden;
 }
 
-.box1:hover {
-
+#box:hover {
+  filter: opacity(90%);
 }
-.box2:hover {
 
-}
-.box3:hover {
-
-}
 
 @keyframes raise {
   0%{
     transform: translateY(15vw);
     visibility: visible;
     opacity: 0%;
-    filter: blur(1000px;)
+    filter: blur(5px);
   }
   100%{
     transform: translateY(0vw);
@@ -221,6 +221,54 @@ a:active {
   max-height: 161px;
 }
 
+.zmtext {
+  position: absolute;
+  top: 17vh;
+  left: calc(69.5vw - 70px);
+  font-size: calc(1.7vw + 1.7vh);
+  color: yellow;
+  text-shadow: 2px 2px 5px black;
+  font-family: bit-regular, monospace;
+  transform: rotateZ(18deg) scale(1.0);
+  animation: zoom 800ms ease 0s infinite;
+}
+@keyframes zoom {
+  0%{transform: rotateZ(18deg) scale(0.9);}
+  50%{transform: rotateZ(18deg) scale(1.1);}
+  100%{transform: rotateZ(18deg) scale(0.9);}
+}
+
+.button {
+  position: absolute;
+  margin: 17px;
+  top: 77vh;
+  left: calc(50vw - 92px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 40px;
+  padding-right: 40px;
+  height: 40px;
+  background: linear-gradient(lime, green);
+  border-radius: 25px;
+  border-width: 0px;
+  box-shadow: 0 0px 8px 3px black;
+  text-align: center;
+  font-family: bit-regular, monospace;
+  font-size: 28px;
+  color: black;
+  text-shadow: 1px 1px 3px black;
+  transform: scale(100%);
+  transition: transform 500ms;
+  animation: blurin 1s linear 0s 1 forwards;
+}
+.button:hover {
+  transform: scale(90%);
+}
+@keyframes blurin {
+  0%{filter: blur(30px);}
+  100%{filter: blur(0px);}
+}
 
 @media only screen and (max-width: 595px) {
   .scrollbar1, .scrollbar2 {
@@ -278,7 +326,7 @@ a:active {
     overflow: auto;
   }
 
-  .box1, .box2, .box3 {
+  #box {
     display: inline-block;
     margin: 20px 0px 20px 0px;
     width: 75vw;
@@ -342,6 +390,9 @@ a:active {
     max-height: 75px;
   }
 
+  .button {
+    top: 88vh;
+  }
 }
 
 @media only screen and (max-height: 420px) {
